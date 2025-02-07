@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 50%;
+            margin: auto;
+        }
+        input, select, textarea {
+            width: 100%;
+            margin: 5px 0;
+            padding: 8px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var mobile = document.getElementById("mobile").value;
+            var password = document.getElementById("password").value;
+            
+            var nameRegex = /^[A-Za-z]+$/;
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var mobileRegex = /^[0-9]{10}$/;
+            
+            if (!firstName.match(nameRegex)) {
+                alert("Please enter a valid first name");
+                return false;
+            }
+            if (!lastName.match(nameRegex)) {
+                alert("Please enter your last name");
+                return false;
+            }
+            if (!email.match(emailRegex)) {
+                alert("Please enter a valid email");
+                return false;
+            }
+            if (!mobile.match(mobileRegex)) {
+                alert("Please enter a valid 10-digit mobile number");
+                return false;
+            }
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long");
+                return false;
+            }
+            alert("Registered Successfully!");
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="validateForm(event)">
+        <label>First Name:</label>
+        <input type="text" id="firstName" required>
+        
+        <label>Last Name:</label>
+        <input type="text" id="lastName" required>
+        
+        <label>Email:</label>
+        <input type="email" id="email" required>
+        
+        <label>Mobile:</label>
+        <input type="text" id="mobile" required>
+        
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        
+        <label>Date of Birth:</label>
+        <input type="date" id="dob" required>
+        
+        <label>Address:</label>
+        <textarea id="address" required></textarea>
+        
+        <label>City:</label>
+        <input type="text" id="city">
+        
+        <label>Area PIN:</label>
+        <input type="text" id="pin">
+        
+        <label>State:</label>
+        <input type="text" id="state">
+        
+        <label>Qualification:</label>
+        <select id="qualification">
+            <option>Select Qualification</option>
+            <option>Graduate</option>
+            <option>Post Graduate</option>
+            <option>PhD</option>
+        </select>
+        
+        <label>Specialization:</label><br>
+        <input type="checkbox"> Computer Science<br>
+        <input type="checkbox"> Information Technology<br>
+        <input type="checkbox"> Computer Architecture<br>
+        <input type="checkbox"> Tele Communications<br>
+        
+        <label>Password:</label>
+        <input type="password" id="password" required>
+        
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
